@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load static %} {% include "scripts.html" %}
+
+<title>{% block title %} Your Order Has Not Been Successful! {% endblock %}</title>
+
+{% block content %}
+
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-10 col-md-8 col-lg-6">
+                            <!-- Heading -->
+                            <h2 class="my-5 h2 text-center">Order Failed</h2>
+
+                            <!--Grid row-->
+                            
+                                  <h2 class="my-5 h2 text-center">Your order was abruptly terminated!</h2>
+                                  <div class="container">
+
+                                    <div class="card-body">
+                                      <a href="/" class="btn btn-black white-text"
+                                        >Home</a
+                                      >
+                                      <a
+                                        href="/accounts/logout"
+                                        class="btn btn-black white-text"
+                                        >Log Out</a
+                                      >
+                                    </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <hr class="mb-4" />
+                             
+
+                              <!--Grid column-->
+                            </div>
+                         
+</main>
+<!--Main layout-->
+
+{% endblock content %} {% block extra_scripts %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+{% endblock extra_scripts %}

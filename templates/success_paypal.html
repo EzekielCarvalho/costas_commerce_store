@@ -1,0 +1,82 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+
+<title>{% block title %} Thanks! Your order was successfully placed! {% endblock %}</title>
+
+{% include "scripts.html" %}
+
+{% block content %}
+
+<!--Main layout-->
+       <main class="mt-5 pt-4">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 col-md-8 col-lg-6">
+                            <!-- Heading -->
+                            <h2 class="my-5 h2 text-center">Order Completed</h2>
+
+                            <!--Grid row-->
+                            
+                                  <div class="card">
+                                    <img
+                                      src="https://data1.ibtimes.co.in/en/full/552884/nikon-d90-dslr-camera.jpg?h=450&l=50&t=40"
+                                      class="card-img-top"
+                                      alt="..."
+                                    />
+                                    <div class="card-body">
+                                      {% for order in order_success%}
+
+                                      <h5 class="card-title">
+                                        Thank you {{ order.user }} for your
+                                        order!
+                                      </h5>
+                                      <p class="card-text">
+                                        Your reference number for this order is
+                                        # {{ order.reference_code }}
+                                      </p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">
+                                        Your date of order is: {{ order.ordered_date }}
+                                      </li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                      {% for order_item in order.items.all%}
+                                      <li class="list-group-item">
+                                        You have ordered for {{ order_item }}
+                                      </li>
+                                      {% endfor %}
+                                    </ul>
+                                    {% endfor %}
+                                    <div class="card-body">
+                                      <a href="/" class="btn btn-black white-text"
+                                        >Home</a
+                                      >
+                                      <a
+                                        href="/accounts/logout"
+                                        class="btn btn-black white-text"
+                                        >Log Out</a
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <hr class="mb-4" />
+                            
+
+                          <!--Grid row-->
+                      
+</main>
+<!--Main layout-->
+
+{% endblock content %} 
+
+{% block extra_scripts %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+
+{% endblock extra_scripts %}

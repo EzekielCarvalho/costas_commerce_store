@@ -1,0 +1,47 @@
+<!-- Note: Websites generally need to serve additional files such as images, JavaScript, or CSS. In Django, we refer to these files as “static files”. Django provides django.contrib.staticfiles to help you manage them.-->
+<!-- Ref: https://docs.djangoproject.com/en/3.2/howto/static-files/-->
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<title>{% block title %}Refunds | Costas Commerce Center{% endblock %}</title>
+
+
+<body>
+{% block content %}
+
+  <!--Main layout-->
+    <main class="mt-5 pt-4">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 col-md-8 col-lg-6">
+                    <!-- Form -->
+                    <form class="form-example" action="" method="POST">
+                        <h1 class="text-center"> Request for a Refund</h1>
+                        <p class="description">You can easily request for a refund by adding your reference code in the form and other details and then submitting it. Please note that we take about 48hrs to realize and confirm refund requests.</p>
+                        <!-- Input fields -->
+                        <div class="form-group">
+                            {% csrf_token %}        <!--Django has a template tag that makes it easy to use CSRF protection ref https://www.stackhawk.com/blog/django-csrf-protection-guide/-->
+                            {{ form|crispy }}       <!-- The form here refers to the form that was definied in views.py in the get and post request entries in the RequestRefundView class. The pipe character indicates that you want to send the results of the left hand side to the filter defined on the right side. The filter will modify the value in some way. So the form gets sent to the filter function defined on the right of the pipe ref https://stackoverflow.com/questions/417265/what-does-sign-mean-in-a-django-template-->
+                        </div>
+                        <button type="submit" class="btn btn-dark white-text btn-block">Submit</button>
+                        <!-- End input fields -->
+                    </form>
+                    <!-- Form end -->
+                </div>
+            </div>
+        </div>
+  
+  
+  
+
+    </main>
+
+{% endblock %}
+  
+</body>
+
+

@@ -1,0 +1,385 @@
+
+<!-- Note: Websites generally need to serve additional files such as images, JavaScript, or CSS. In Django, we refer to these files as “static files”. Django provides django.contrib.staticfiles to help you manage them.-->
+<!-- Ref: https://docs.djangoproject.com/en/3.2/howto/static-files/-->
+
+{% extends "base.html" %} {% load static %}
+
+<title>{% block title %}Home | Costas Commerce Center{% endblock %}</title>
+
+<body>
+  {% block content %}
+
+   <!--Carousel Wrapper-->
+   <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="4"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1613235577937-9ac3eed992fc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2072&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Welcome to Costas Commerce Store!</strong>
+              </h1>
+
+              <p>
+                <strong>Your Search For Trendy and Modern Cameras Stops Here...</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>We at Costas Commerce Store, Portugal, have researched and kept track of latest releases of a range of cameras, from DSLRs to Mirrorless and so on...</strong>
+              </p>
+
+              <a href="?search=Latest%20Releases" class="btn btn-outline-white btn-lg">What's New
+              <i class="far fa-newspaper"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1617468264427-9047ec95d8e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Want security in warranty and extra services for your camera?</strong>
+              </h1>
+
+              <p>
+                <strong>We've got you covered!</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>We ensure that all our customers have maximum security in warranties for their products, along with maximum customer support, should any problem arise with their cameras. Our strong tie ups with big brands makes it easier for our customers to get replacements and support post-haste...</strong>
+              </p>
+
+              <a href="/about-us" class="btn btn-outline-white btn-lg">Check Who We Are and What We Cover
+                <i class="fas fa-building"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="view" style="background-image: url('https://images.unsplash.com/photo-1589262804704-c5aa9e6def89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80'); background-repeat: no-repeat; background-size: cover;">
+      
+                <!-- Mask & flexbox options-->
+                <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+      
+                  <!-- Content -->
+                  <div class="text-center white-text mx-5 wow fadeIn">
+                    <h1 class="mb-4">
+                      <strong>We cover the world</strong>
+                    </h1>
+      
+                    <p>
+                      <strong>Our mission is to supply cameras to the whole world, and that's exactly what we've accomplished</strong>
+                    </p>
+      
+                    <p class="mb-4 d-none d-md-block">
+                      <strong>We strive to ensure that we're keeping up with the market in dealing with and supplying modern cameras in Portugal, the EU as well as the whole world...</strong>
+                    </p>
+      
+                    <a href="/" class="btn btn-outline-white btn-lg">View all our cameras
+                      <i class="fas fa-camera-retro"></i>
+                    </a>
+                  </div>
+                  <!-- Content -->
+      
+                </div>
+                <!-- Mask & flexbox options-->
+      
+              </div>
+            </div>
+            <!--/Second slide-->
+
+                  <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1497503447928-7d1ba86e7151?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1930&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Are DSLRs your thing?</strong>
+              </h1>
+
+              <p>
+                <strong>Visit us to browse a range of DSLRs available at our store</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Our DSLRs available in our store are varied, so you will have a big choice of cameras to choose from...</strong>
+              </p>
+
+              <a href="?search=DSLR" class="btn btn-outline-white btn-lg">View Our DSLRs
+                <i class="fas fa-camera"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1517445297835-99352d12c747?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Are you a Mirrorless person?</strong>
+              </h1>
+
+              <p>
+                <strong>We provide a wide range of mirrorless cameras to choose from.</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong> Do you feel like you've spent enough time with a DSLR or maybe you'd just want to make a fresh start with a mirrorless camera itself...we'll help you choose...We are the authorized partners of Canon, Panasonic, Nikon, Fujifilm and many other renown brands. So, don't worry, you're in good hands...We work directly with these main brands to provide the best cameras to you...</strong>
+              </p>
+
+              <a href="?search=Mirrorless%20Cameras" class="btn btn-outline-white btn-lg">Start Your Mirrorless Journey
+               <i class="fas fa-suitcase"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-3 mt-8 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand"><i class="fas fa-sort-amount-up-alt"> Categories :</i></span>
+
+        <!-- Collapse button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#basicExampleNav"
+          aria-controls="basicExampleNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+ <!-- Collapsible content & Categories loop -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          {% if cat %}
+          <ul class="navbar-nav mr-auto">
+
+           {% for item in cat %}
+           <li class="nav-item">
+              <a class="nav-link" href="?search={{ item }}">    <!-- this is to loop through the items in category model and use the search bar to link to the categories-->
+            {{ item }} <br/>                  <!-- this is a link to loop through the categories model-->
+            </a>
+            </li>
+            {% endfor %}
+
+        
+          </ul>
+          {% endif %}
+          <!-- Links -->
+
+          <form
+            action="{% url 'core:searchbar' %}"
+            method="get"
+            ,
+            class="form-inline"
+          >
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-dark" type="submit">
+              <i class="fas fa-search"></i>
+          </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+      </nav>
+      <!--/.Navbar-->
+
+
+
+<section class="text-center mb-4">
+
+    {% if post %}
+
+          <h4>Here are your search results:</h4>
+
+          <br />
+
+        <div class="row wow fadeIn">
+
+          {% for i in post %}           <!--object_list is used because ListView was used and While this view is executing, self.object_list will contain the list of objects (usually, but not necessarily a queryset) that the view is operating upon. ref: https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#listview-->                   <!--This loops over the items dictionary in views.py for the home page.html, the items is linked to Item in models.py as showin in views.py items Item.objects.all. so we will get a repeat of one item for multiple entries-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                  alt=""> {% endcomment %}
+                <img src="{{ i.image.url }}" class="card-img-top">     <!-- this is from the Item class in models.py the image attribute-->
+                <a href="{{ i.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="grey-text">
+                  <h5>{{ i.get_category_display }}</h5>                        <!--item is from the For loop taking from "items", the rest of the code is from the format "Model.get_FOO_display()" For every field that has choices set, the object will have a get_FOO_display() method, where FOO is the name of the field. This method returns the “human-readable” value of the field. In our case "category" is from models.py from the item class, and we use "display" so that we can get the human readable name, which in our case will be the label names from the class in models.py (ref: https://docs.djangoproject.com/en/3.2/ref/models/instances/#django.db.models.Model.get_FOO_display ALSO CHECK : https://stackoverflow.com/questions/4320679/django-display-choice-value)-->
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ i.get_absolute_url }}" class="dark-grey-text">{{ i.title }}            <!--This is for the title of each product. This is for putting a dynamic title taken from the views.py (items, and ultimately from Item object from models.py line 20) It’s good practice to use get_absolute_url() in templates, instead of hard-coding your objects’ URLs. The logic here is that if you change the URL structure of your objects, even for something small like correcting a spelling error, you don’t want to have to track down every place that the URL might be created. Specify it once, in get_absolute_url() and have all your other code call that one place. If it makes sense for your model’s instances to each have a unique URL, you should define get_absolute_url(). Ref to https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url for format-->
+                      <span class="badge badge-pill {{ i.get_label_display }}-color">NEW</span>  <!--item is from the For loop taking from "items", the rest of the code is from the format "Model.get_FOO_display()" For every field that has choices set, the object will have a get_FOO_display() method, where FOO is the name of the field. This method returns the “human-readable” value of the field. In our case "label" is from models.py from the item class, and we use "display" so that we can get the human readable name, which in our case will be the label names from the class in models.py (ref: https://docs.djangoproject.com/en/3.2/ref/models/instances/#django.db.models.Model.get_FOO_display ALSO CHECK : https://stackoverflow.com/questions/4320679/django-display-choice-value)-->
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>€
+                  {% if i.discount_price %}      <!-- if the discounted_price from item exists-->
+                  {{ i.discount_price }}        <!--Then show the discounted price. This is for putting a dynamic price taken from the views.py (items, and ultimately from Item object from models.py line 20)-->
+                  {% else %}
+                  {{ i.price }}                  <!-- Else, show the plain item price alone-->
+                  {% endif %}
+                </strong> 
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          
+          </div>
+          {% endfor %}
+
+          {% else %}
+          <h6>Sorry but your search query yielded no results!</h6>
+        </div>
+        <!--Grid row-->
+
+        {% endif %}
+
+      </section>
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+      {% if is_paginated %}                   <!--A boolean representing whether the results are paginated. Specifically, this is set to False if no page size has been specified, or if the available objects do not span multiple pages. ref https://docs.djangoproject.com/en/3.1/ref/class-based-views/mixins-multiple-object/#django.views.generic.list.MultipleObjectMixin.get_context_data-->
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          {% if page_obj.has_previous %}      <!--if the page object has a previous page, then the link element after that will show. page_obj: An instance of django.core.paginator.Page. If the page is not paginated, this context variable will be None. You usually won’t construct Page objects by hand – you’ll get them by iterating Paginator, or by using Paginator.page(). ref https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">      <!--the href is to create a dynamic page number that is changeable rather than static ref https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">                                                       {% comment %} page_obj.number is the dynamic page number {% endcomment %}
+             <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}          
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+  
+
+          {% if page_obj.has_next %}      <!--if the page object has a next page, then the link element after that will show. page_obj: An instance of django.core.paginator.Page. If the page is not paginated, this context variable will be None. You usually won’t construct Page objects by hand – you’ll get them by iterating Paginator, or by using Paginator.page(). ref https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">      <!--the href is to create a dynamic page number that is changeable rather than static ref https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </main>
+  <!--Main layout-->
+
+  {% endblock %}
+</body>

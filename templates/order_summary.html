@@ -1,0 +1,134 @@
+<!-- Note: Websites generally need to serve additional files such as images, JavaScript, or CSS. In Django, we refer to these files as “static files”. Django provides django.contrib.staticfiles to help you manage them.-->
+<!-- Ref: https://docs.djangoproject.com/en/3.2/howto/static-files/-->
+
+{% extends "base.html" %} {% load static %}
+
+<title>{% block title %}Home {% endblock %}</title>
+
+<body>
+  {% block content %}
+
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container">
+      <!-- Table of order summary -->
+
+      <div class="table-responsive text-nowrap">
+        <h2>Order Summary</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Item title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total Item Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for order_item in object.items.all %}
+            <!--for each item that is present in the Order class (the items feature line 56). all is used because it's a many to many field-->
+
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <!-- this is used for counting from 1 onwards. The current iteration of the loop (1-indexed) ref https://docs.djangoproject.com/en/3.2/ref/templates/builtins/-->
+              <td>{{ order_item.item.title }}</td>
+              <!-- .item.title is from models.py OrderItem class and the Item class-->
+              <td>€ {{ order_item.item.price }}</td>
+              <!-- .item.price is from models.py OrderItem class and the Item class-->
+              <td>
+                <a
+                  href="{% url 'core:remove-one-item-from-cart' order_item.item.slug %}"
+                  ><i class="fas fa-minus-square mr-4"></i></a
+                >{{ order_item.quantity }}<a
+                  href="{% url 'core:add-to-cart' order_item.item.slug %}"
+                  ><i class="fas fa-plus-square ml-4"></i
+                ></a>
+              </td>
+              <!-- .quantity is from models.py OrderItem class. The 'item" is not required here since we're taking quantity directly from the OrderItem class. the minus and addition buttons have their own links. The item.slug is from the Item class in models.py The name of the url is from the urls.py. The add-to-cart link is for the add button so that you can add more in quantity, this is from urls.py line 22-->
+              <td>
+                {% if order_item.item.discount_price %}
+                <!-- item is from the OrderItem class  and discount_price is from the Item class all in models.py. if there is a discount price-->
+
+                € {{ order_item.get_total_discount_item_price }}
+                <!--get_total_discount_item_price is from the OrderItem class. then show the discount price else-->
+                <span class="badge bg-success"
+                  >You save € {{ order_item.get_amount_saved }}</span
+                >
+                <!-- from OrderItem class from models.py line 58-->
+
+                {% else %} € {{ order_item.get_total_item_price }}
+                <!-- else show the normal price-->
+
+                {% endif %}
+
+                <a
+                  style="color: red"
+                  href="{% url 'core:remove-from-cart' order_item.item.slug %}"
+                >
+                  <i class="far fa-trash-alt float-right"></i>
+                </a>
+              </td>
+            </tr>
+
+            {% empty %}
+            <!--if the cart is empty-->
+
+            <tr>
+              <td colspan="5">There's nothing in your cart!</td>
+            </tr>
+
+            <tr>
+              <td colspan="4">
+                <a class="btn btn-dark" href="/">Continue Shopping</a>
+              </td>
+              <!--To take you back home to continue shopping-->
+            </tr>
+
+            {% endfor %} {% if object.coupon %}
+            <!-- if there is a coupon, then show the following row below -->
+            <tr>
+              <td colspan="4"><b>Coupon</b></td>
+              <td>
+                <b>- €{{ object.coupon.amount }}</b>
+                <a style="color: red" href="{% url 'core:remove-coupon' %}">
+                  <i class="far fa-trash-alt float-right"></i>
+                </a>
+              </td>
+              <!--from models.py line 78 to get the ultimate total either discounted price if it exists or normal price if no discount-->
+            </tr>
+
+            {% else %}
+
+            <tr>
+              <td colspan="5">There are no active coupons to your order!</td>
+            </tr>
+
+            {% endif %} {% if object.get_total %}<!--If there is an order total, then we display the below code otherwise we do not-->
+            <tr>
+              <td colspan="4"><b>Final Total</b></td>
+              <td><b>€ {{ object.get_total }}</b></td>
+              <!--from models.py line 78 to get the ultimate total either discounted price if it exists or normal price if no discount-->
+            </tr>
+
+            <tr>
+              <td colspan="4">
+                <a class="btn btn-dark" href="/checkout-page/">Checkout Now</a>
+              </td>
+              <!--To checkout button-->
+              <td colspan="4">
+                <a class="btn btn-dark" href="/">Continue Shopping</a>
+              </td>
+              <!--To take you back home to continue shopping-->
+            </tr>
+
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <!--Main layout-->
+  {% endblock %}
+</body>

@@ -1,0 +1,53 @@
+<div class="container">
+
+        <div class="col-md-12 mb-6">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-danger badge-pill">{{ order.items.count }}</span>   <!-- this is connected with views.py in payments class the context of order:order. This order.items is from the Order class in views.py -->
+          </h4>
+
+          <!-- Cart -->
+          <ul class="list-group mb-3 z-depth-1">
+            {% for order_item in order.items.all %}     <!--we're looping over the item features in Item class which is connected to the Order class and OrderItem class. for each item that is present in the Order class (the items feature line 56). all is used because it's a many to many field-->
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">{{ order_item.quantity }} X {{ order_item.item.title }}</h6>     <!-- quantity from orderitem class in models.py. from the ITem class connected to the OrderItem class, features-->
+                <small class="text-muted">{{ order_item.item.description}}</small>      <!-- from item class from models.py description feature-->
+              </div>
+              <span class="text-muted">€ {{ order_item.get_final_amount}}</span>        <!-- line 62 models.py. This is from orderitem class. This is a function made to get the final price, this is made so that we don't have to keep repeating the "inf there is a discounted price" logic as in line 49 order_summary html-->
+            </li>
+           {% endfor %}
+           {% if order.coupon %}          <!--if a coupon is entered then follow with the next steps -->
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small>{{ order.coupon.code }}</small>                          <!-- line 97 models.py. This is a function made to get the coupon code as per the coupon class. Coupon class is joined to the Order class-->
+              </div>
+              <span class="text-success">-€ {{ order.coupon.amount }}</span>     <!-- line 97 models.py. This is a function made to get the amount as per the coupon class. Coupon class is joined to the Order class -->
+            </li>
+            {% endif %}
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (EUR)</span>
+              <strong>€{{ order.get_total }}</strong>       <!-- line 97 models.py. This is a function made to get the total of all the items in the order-->
+            </li>
+          </ul>
+          <!-- Cart -->
+
+                    <!-- Promo code -->
+          {% if SHOW_COUPON_FORM %}             <!-- if show coupon form is set to true then do the following below -->
+          <form class="card p-2" action=" {%url 'core:add-coupon' %}" method="POST">      <!-- we are posting to the "Add coupon url in urls.py"-->
+          {% csrf_token %}
+            <div class="input-group">
+                {{ couponform.code }}                       <!-- couponform is from views.py line 31 and "code" is from line 38 forms.py. That's the only field available in the class there -->
+                 <div class="input-group-append">
+                <button class="btn btn-success btn-md waves-effect m-0" type="submit">Redeem</button>
+              </div>
+            </div>
+          </form>
+          <!-- Promo code -->
+        {% endif %}
+        </div>
+
+        

@@ -1,0 +1,15 @@
+<!-- Note: Django’s template language is designed to strike a balance between power and ease. It’s designed to feel comfortable to those used to working with HTML. -->
+<!-- ref: https://docs.djangoproject.com/en/3.2/ref/templates/language/-->
+
+{% extends "base.html" %}           <!--If you use extends in a template, it must be the first template tag in that template. Template inheritance won’t work, otherwise..The extends tag is the key here. It tells the template engine that this template “extends” another template. When the template system evaluates this template, first it locates the parent – in this case, “base.html”.-->
+                                    <!--At that point, the template engine will notice the block tags in base.html and replace those blocks with the contents of the child template. -->
+{% block content %}                 <!--This is for content-->
+
+<h2> You've not added any content :(</h2>
+
+{% for item in items %}             <!-- This is a tag. This is going to do a for loop. This requires the beginning tag (for) and the end tag (endfor)-->
+    {{item}}                        <!--This is a variable. When the template engine encounters a variable, it evaluates that variable and replaces it with the result. -->
+
+{% endfor %}                        <!--End tag for the for loop-->
+{% endblock content %}
+

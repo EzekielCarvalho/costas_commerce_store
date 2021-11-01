@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<title>{% block title %}Cameras | Costas Commerce Store{% endblock %}</title>
+
+
+
+<body>
+
+{% block content %}
+
+
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <h2 class="my-2 h2 text-center">{{ object.title }}</h2>
+
+    <div class="container dark-grey-text mt-5">
+
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+      
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+                <img src="{{ object.image.url }}" class="card-img-top">     <!-- this is from the Item class in models.py the image attribute-->
+
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>      <!--The object used here is required by default from using the DetailView. The display is normally required since we want the human readable name from the database. Ref https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#detailview-->
+              </a>
+       
+            </div>
+
+            <p class="lead">
+           
+             {% if object.discount_price %}      <!-- if the discounted_price from item exists-->
+                <span class="mr-1">
+                <del>€ {{ object.price }}</del>  <!-- then delete the object price shown -->
+              </span>
+              <span>€ {{ object.discount_price }}</span>     <!--And show forth the discounted_price which comes from the Item class in models.py. The object used here is required by default from using the DetailView. The display is normally required since we want the human readable name from the database. Ref https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#detailview-->
+                  {% else %}
+                 <span>€{{ object.price }}<span>                  <!-- Else, show the plain item price alone-->
+                  {% endif %}
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p> {{ object.additional_description }} </p>
+
+    {% comment %}        <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+
+                    <a href="{{ object.get_addition_to_cart_url }}" class="btn btn-dark btn-md my-0 p">Add to cart     {% comment %} This is the add to cart button which derives its information from line 36 models.py which is from line 20 urls.py which in turn is connected to views.py line 24. This is from the function {% endcomment %}
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </a>
+              
+
+               <a href="{{ object.get_remove_item_from_cart }}" class="btn btn-danger btn-md my-0 p">Remove from cart     {% comment %} This is the add to cart button which derives its information from line 36 models.py which is from line 20 urls.py which in turn is connected to views.py line 24. This is from the function {% endcomment %}
+                
+              </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional details</h4>
+
+          {{ object.description }}
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+    <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Also Check Out Our Other Cameras ...</h4>
+                    <p> Here we display in a mixed fashion, all the other cameras available at our stores. Don't hesitate to check them out, and if you have any queries, reach out to us via our contact details in our "Contact Us" Page </p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+
+      <hr>
+
+      <!--Grid row-->
+      
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+     <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+
+          {% for item in each_item %}           <!--object_list is used because ListView was used and While this view is executing, self.object_list will contain the list of objects (usually, but not necessarily a queryset) that the view is operating upon. ref: https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#listview-->                   <!--This loops over the items dictionary in views.py for the home page.html, the items is linked to Item in models.py as showin in views.py items Item.objects.all. so we will get a repeat of one item for multiple entries-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                  alt=""> {% endcomment %}
+                <img src="{{ item.image.url }}" class="card-img-top">     <!-- this is from the Item class in models.py the image attribute-->
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                  <h5>{{ item.get_category_display }}</h5>                        <!--item is from the For loop taking from "items", the rest of the code is from the format "Model.get_FOO_display()" For every field that has choices set, the object will have a get_FOO_display() method, where FOO is the name of the field. This method returns the “human-readable” value of the field. In our case "category" is from models.py from the item class, and we use "display" so that we can get the human readable name, which in our case will be the label names from the class in models.py (ref: https://docs.djangoproject.com/en/3.2/ref/models/instances/#django.db.models.Model.get_FOO_display ALSO CHECK : https://stackoverflow.com/questions/4320679/django-display-choice-value)-->
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}            <!--This is for the title of each product. This is for putting a dynamic title taken from the views.py (items, and ultimately from Item object from models.py line 20) It’s good practice to use get_absolute_url() in templates, instead of hard-coding your objects’ URLs. The logic here is that if you change the URL structure of your objects, even for something small like correcting a spelling error, you don’t want to have to track down every place that the URL might be created. Specify it once, in get_absolute_url() and have all your other code call that one place. If it makes sense for your model’s instances to each have a unique URL, you should define get_absolute_url(). Ref to https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url for format-->
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>  <!--item is from the For loop taking from "items", the rest of the code is from the format "Model.get_FOO_display()" For every field that has choices set, the object will have a get_FOO_display() method, where FOO is the name of the field. This method returns the “human-readable” value of the field. In our case "label" is from models.py from the item class, and we use "display" so that we can get the human readable name, which in our case will be the label names from the class in models.py (ref: https://docs.djangoproject.com/en/3.2/ref/models/instances/#django.db.models.Model.get_FOO_display ALSO CHECK : https://stackoverflow.com/questions/4320679/django-display-choice-value)-->
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>€
+                  {% if item.discount_price %}      <!-- if the discounted_price from item exists-->
+                  {{ item.discount_price }}        <!--Then show the discounted price. This is for putting a dynamic price taken from the views.py (items, and ultimately from Item object from models.py line 20)-->
+                  {% else %}
+                  {{ item.price }}                  <!-- Else, show the plain item price alone-->
+                  {% endif %}
+                </strong> 
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          
+          </div>
+          {% endfor %}
+        </div>
+
+     
+        <!--Grid row-->
+
+      </section>
+        <!--Grid column-->
+
+     
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+</div>
+
+    {% endblock %}
+</body>

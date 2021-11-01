@@ -1,0 +1,172 @@
+{% extends "base.html" %} {% load static %}
+
+<title>
+  {% block title %} Thanks! Your order was successfully placed! {% endblock %}
+</title>
+
+{% include "scripts.html" %} {% block content %}
+
+<!--Main layout-->
+  <main class="mt-5 pt-4">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-10 col-md-8 col-lg-6">
+                            <!-- Heading -->
+                            <h2 class="my-5 h2 text-center">Order Completed</h2>
+
+                            <!--Grid row-->
+                            
+                                  <div class="card">
+                                    <img
+                                      src="https://data1.ibtimes.co.in/en/full/552884/nikon-d90-dslr-camera.jpg?h=450&l=50&t=40"
+                                      class="card-img-top"
+                                      alt="..."
+                                    />
+                                    <div class="card-body">
+                                      {% for order in order_success%}
+
+                                      <h5 class="card-title">
+                                        Thank you {{ order.user }} for your
+                                        order!
+                                      </h5>
+                                      <p class="card-text">
+                                        Your reference number for this order is
+                                        # {{ order.reference_code }}
+                                      </p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">
+                                        Your date of order is: {{ order.ordered_date }}
+                                      </li>
+                                    </ul>
+                                    <ul class="list-group list-group-flush">
+                                      {% for order_item in order.items.all%}
+                                      <li class="list-group-item">
+                                        You have ordered for {{ order_item }}
+                                      </li>
+                                      {% endfor %}
+                                    </ul>
+                                    {% endfor %}
+                                    <div class="card-body">
+                                      <a href="/" class="btn btn-dark"
+                                        >Home</a
+                                      >
+                                      <a
+                                        href="/accounts/logout"
+                                        class="btn btn-dark"
+                                        >Log Out</a
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <hr class="mb-4" />
+                         
+
+                          <!--Grid row-->
+                        
+</main>
+<!--Main layout-->
+
+{% endblock content %} {% block extra_scripts %}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script nonce="">
+  // This is part of the stripe payment method form taken from git (but could be obtained from stripe website)
+
+  var stripe = Stripe(
+    "pk_test_51H1OafE3YTenXSzfecGaACyMkoh9MtZy2PXiqmLadSwnEzODKRBoWnGMeqWoO3K3EMDTj3tDnlwIeHah5kTjqsLq00eZj4z5WG"
+  );
+
+  // Create an instance of Elements.
+  var elements = stripe.elements();
+
+  // Custom styling can be passed to options when creating an Element.
+  // (Note that this demo uses a wider set of styles than the guide below.)
+  var style = {
+    base: {
+      color: "#32325d",
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: "antialiased",
+      fontSize: "16px",
+      "::placeholder": {
+        color: "#aab7c4",
+      },
+    },
+    invalid: {
+      color: "#fa755a",
+      iconColor: "#fa755a",
+    },
+  };
+
+  // Create an instance of the card Element.
+  var card = elements.create("card", { style: style });
+
+  // Add an instance of the card Element into the `card-element` <div>.
+  card.mount("#card-element");
+
+  // Handle real-time validation errors from the card Element.
+  card.addEventListener("change", function (event) {
+    var displayError = document.getElementById("card-errors");
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = "";
+    }
+  });
+
+  // Handle form submission.
+  var form = document.getElementById("stripe-form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function (result) {
+      if (result.error) {
+        // Inform the user if there was an error.
+        var errorElement = document.getElementById("card-errors");
+        errorElement.textContent = result.error.message;
+      } else {
+        // Send the token to your server.
+        stripeTokenHandler(result.token);
+      }
+    });
+  });
+
+  // Submit the form with the token ID.
+  function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById("stripe-form");
+    var hiddenInput = document.createElement("input");
+    hiddenInput.setAttribute("type", "hidden");
+    hiddenInput.setAttribute("name", "stripeToken"); // the stripe token is sent by the user after submitting the payment stripe form
+    hiddenInput.setAttribute("value", token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+  }
+
+  // Here we use Jquery to select the classes of current-card-form and new-card-form. ref https://www.w3schools.com/jquery/sel_class.asp
+
+  const currentCardForm = $(".current-card-form");
+  const newCardForm = $(".new-card-form");
+  //Here we use Javascript (HTML DOM) to select the input attributes of name=save ref https://www.w3schools.com/Jsref/met_document_queryselector.asp
+  const use_default_card = document.querySelector("input[name=save]"); // based on the input which is the checkbox
+  use_default_card.addEventListener("change", function () {
+    if (this.checked) {
+      // if the checkbox is selected
+      newCardForm.hide(); // then it will hide one form
+      currentCardForm.show(); // and show the other form
+    } else {
+      newCardForm.show(); // else it will show a new form
+      currentCardForm.hide(); // and hide the current form
+    }
+  });
+</script>
+
+{% endblock extra_scripts %}
