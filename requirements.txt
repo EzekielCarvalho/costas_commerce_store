@@ -19,82 +19,46 @@ conda-verify==3.4.2
 contextlib2==0.6.0.post1
 cycler==0.10.0
 cytoolz==0.11.0
-distributed @ file:///C:/ci/distributed_1617384289923/work
 dj-database-url==0.5.0
 Django==2.2.13
 django-heroku==0.3.1
-docutils @ file:///C:/ci/docutils_1617481617511/work
 entrypoints==0.3
 et-xmlfile==1.0.1
 fastcache==1.1.0
 future==0.18.2
-gevent @ file:///C:/ci/gevent_1616773090559/work
-greenlet @ file:///C:/ci/greenlet_1611958565931/work
 gunicorn==20.1.0
 h5py==2.10.0
 HeapDict==1.0.1
-imagecodecs @ file:///C:/ci/imagecodecs_1617996768495/work
-importlib-metadata @ file:///C:/ci/importlib-metadata_1617877484576/work
-ipykernel @ file:///C:/ci/ipykernel_1596190155316/work/dist/ipykernel-5.3.4-py3-none-any.whl
-ipython @ file:///C:/ci/ipython_1617121002983/work
 jdcal==1.4.1
-jedi @ file:///C:/ci/jedi_1606914528444/work
 json5==0.9.5
 jupyter==1.0.0
-jupyter-core @ file:///C:/ci/jupyter_core_1612213356021/work
-jupyter-server @ file:///C:/ci/jupyter_server_1616084298403/work
-keyring @ file:///C:/ci/keyring_1614616910860/work
-kiwisolver @ file:///C:/ci/kiwisolver_1612282606037/work
-lazy-object-proxy @ file:///C:/ci/lazy-object-proxy_1616529307648/work
 llvmlite==0.36.0
 locket==0.2.1
-lxml @ file:///C:/ci/lxml_1616443455957/work
 MarkupSafe==1.1.1
-matplotlib @ file:///C:/ci/matplotlib-suite_1613408055530/work
 mccabe==0.6.1
 menuinst==1.4.16
 mistune==0.8.4
 mkl-fft==1.3.0
-mkl-random @ file:///C:/ci/mkl_random_1618854156666/work
 mkl-service==2.3.0
 mpmath==1.2.1
-msgpack @ file:///C:/ci/msgpack-python_1612287368835/work
 multipledispatch==0.6.0
 mypy-extensions==0.4.3
 navigator-updater==0.2.1
-nbconvert @ file:///C:/ci/nbconvert_1601914925608/work
-notebook @ file:///C:/ci/notebook_1616443715883/work
-numba @ file:///C:/ci/numba_1616774458845/work
-numexpr @ file:///C:/ci/numexpr_1618856738664/work
-numpy @ file:///C:/ci/numpy_and_numpy_base_1618497418457/work
 olefile==0.46
-pandas @ file:///C:/ci/pandas_1618365634936/work
-pandocfilters @ file:///C:/ci/pandocfilters_1605102497129/work
 parso==0.7.0
-path @ file:///C:/ci/path_1614022440181/work
-pathlib2 @ file:///C:/ci/pathlib2_1607025069150/work
 pathspec==0.7.0
 patsy==0.5.1
 pep8==1.7.1
-Pillow @ file:///C:/ci/pillow_1617386341487/work
 pkginfo==1.7.0
-pluggy @ file:///C:/ci/pluggy_1615976358795/work
 ply==3.11
-psutil @ file:///C:/ci/psutil_1612298324802/work
 psycopg2==2.9.1
 pycosat==0.6.3
 pycurl==7.43.0.6
-pyerfa @ file:///C:/ci/pyerfa_1619391071834/work
-pylint @ file:///C:/ci/pylint_1617136058775/work
-PyNaCl @ file:///C:/ci/pynacl_1595000047588/work
 pyodbc===4.0.0-unsupported
 pyreadline==2.1
-pyrsistent @ file:///C:/ci/pyrsistent_1600141795814/work
-PySocks @ file:///C:/ci/pysocks_1605287845585/work
 pytest==6.2.3
 python-decouple==3.5
 pytz==2018.5
-PyWavelets @ file:///C:/ci/pywavelets_1601658407916/work
 pywin32==227
 pywin32-ctypes==0.2.0
 pywinpty==0.5.7
@@ -102,33 +66,17 @@ PyYAML==5.4.1
 pyzmq==20.0.0
 QDarkStyle==2.8.1
 QtPy==1.9.0
-regex @ file:///C:/ci/regex_1617569893741/work
-Rtree @ file:///C:/ci/rtree_1618421009405/work
-ruamel-yaml-conda @ file:///C:/ci/ruamel_yaml_1616016967756/work
 scikit-image==0.18.1
-scikit-learn @ file:///C:/ci/scikit-learn_1614446896245/work
-scipy @ file:///C:/ci/scipy_1618856128765/work
 simplegeneric==0.8.1
 sip==4.19.13
-six @ file:///C:/ci/six_1605187374963/work
-sniffio @ file:///C:/ci/sniffio_1614030707456/work
-spyder @ file:///C:/ci/spyder_1616776239898/work
-spyder-kernels @ file:///C:/ci/spyder-kernels_1614030842607/work
-SQLAlchemy @ file:///C:/ci/sqlalchemy_1618090063261/work
 sqlparse==0.2.4
 statsmodels==0.12.2
-sympy @ file:///C:/ci/sympy_1618255511605/work
 tables==3.6.1
 terminado==0.9.4
-tornado @ file:///C:/ci/tornado_1606942392901/work
-typed-ast @ file:///C:/ci/typed-ast_1610466535590/work
-ujson @ file:///C:/ci/ujson_1611241570789/work
 unicodecsv==0.14.1
-watchdog @ file:///C:/ci/watchdog_1612471251191/work
 webencodings==0.5.1
 whitenoise==5.3.0
 widgetsnbextension==3.5.1
-win-inet-pton @ file:///C:/ci/win_inet_pton_1605306167264/work
 win-unicode-console==0.5
 wincertstore==0.2
 wrapt==1.12.1
@@ -137,4 +85,3 @@ xlwt==1.3.0
 xmltodict==0.12.0
 zict==2.0.0
 zope.event==4.5.0
-zope.interface @ file:///C:/ci/zope.interface_1616357322857/work
