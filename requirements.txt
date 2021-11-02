@@ -48,7 +48,6 @@ pyreadline==2.1
 pytest==6.2.3
 python-decouple==3.5
 pytz==2018.5
-pywin32==302
 pywin32-ctypes==0.2.0
 pywinpty==0.5.7
 PyYAML==5.4.1
