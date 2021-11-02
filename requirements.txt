@@ -4,41 +4,20 @@ appdirs==1.4.4
 argh==0.26.2
 atomicwrites==1.4.0
 autopep8==1.4.4
-Babel @ file:///tmp/build/80754af9/babel_1607110387436/work
-backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
-backports.functools-lru-cache @ file:///tmp/build/80754af9/backports.functools_lru_cache_1618170165463/work
-backports.shutil-get-terminal-size @ file:///tmp/build/80754af9/backports.shutil_get_terminal_size_1608222128777/work
-backports.tempfile @ file:///home/linux1/recipes/ci/backports.tempfile_1610991236607/work
 backports.weakref==1.0.post1
-bcrypt @ file:///C:/ci/bcrypt_1597936263757/work
-beautifulsoup4 @ file:///home/linux1/recipes/ci/beautifulsoup4_1610988766420/work
-bitarray @ file:///C:/ci/bitarray_1618435038389/work
 bkcharts==0.2
 black==19.10b0
-bleach @ file:///tmp/build/80754af9/bleach_1612211392645/work
-bokeh @ file:///C:/ci/bokeh_1620784067744/work
 boto==2.49.0
 Bottleneck==1.3.2
 brotlipy==0.7.0
 certifi==2020.12.5
-cffi @ file:///C:/ci/cffi_1613247279197/work
-chardet @ file:///C:/ci/chardet_1607690654534/work
-click @ file:///home/linux1/recipes/ci/click_1610990599742/work
-cloudpickle @ file:///tmp/build/80754af9/cloudpickle_1598884132938/work
 clyent==1.2.2
-colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
 comtypes==1.1.9
 conda==4.10.1
 conda-build==3.21.4
-conda-content-trust @ file:///tmp/build/80754af9/conda-content-trust_1617045594566/work
-conda-package-handling @ file:///C:/ci/conda-package-handling_1618262320430/work
-conda-repo-cli @ file:///tmp/build/80754af9/conda-repo-cli_1620168426516/work
-conda-token @ file:///tmp/build/80754af9/conda-token_1620076980546/work
 conda-verify==3.4.2
 contextlib2==0.6.0.post1
-cryptography @ file:///C:/ci/cryptography_1616769344312/work
 cycler==0.10.0
-Cython @ file:///C:/ci/cython_1618435363327/work
 cytoolz==0.11.0
 dask @ file:///tmp/build/80754af9/dask-core_1617390489108/work
 decorator @ file:///tmp/build/80754af9/decorator_1617916966915/work
