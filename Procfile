@@ -1,1 +1,1 @@
-web: gunicorn django_project.wsgi:costas --log-file - --log-level debug
+web: gunicorn core.wsgi:costas --log-file - --log-level debug
