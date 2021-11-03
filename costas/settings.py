@@ -10,7 +10,7 @@ PUBLIC_KEY = 'pk_test_51H1OafE3YTenXSzfecGaACyMkoh9MtZy2PXiqmLadSwnEzODKRBoWnGMe
 SECRET_KEY = 'sk_test_51H1OafE3YTenXSzf4hDhTVGnjmRJQa6vvnhGzgv9nQMf7FKIYilKeprkktpl4GnvUkwRlMmtCUSQQuOZhfIZMaau00IBxGfxmW'
 WEBHOOK_SECRET = 'whsec_qIZQ7psuAA4NhQZwXooNpJorQVdDDGjH'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rocky-waters-53961.herokuapp.com', '127.0.0.1:8000']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -67,7 +67,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
