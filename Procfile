@@ -1,1 +1,1 @@
-web: gunicorn core.costas.wsgi
+web: gunicorn costas.wsgi
