@@ -170,7 +170,7 @@ AUTH_PASSWORD_VALIDATORS = [
     }
 ]
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['rocky-waters-53961.herokuapp.com', '127.0.0.1:8000', 'localhost']
 
 try:
     from .local_settings import *  # noqa
