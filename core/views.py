@@ -547,7 +547,6 @@ class HomeView(ListView):                                                       
     model = Item                                                                        # as part of the format in https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#listview Item is a class                                                           
     template_name = "home-page.html"                                                    # The full name of a template to use as defined by a string. Not defining a template_name will raise a django.core.exceptions.ImproperlyConfigured exception. ref https://docs.djangoproject.com/en/3.2/ref/class-based-views/mixins-simple/#django.views.generic.base.TemplateResponseMixin.template_name
     paginate_by = 10                                                                     # as part of the format in https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#listview This is for pagination
-    cats = Category.objects.all()
 
     def get_context_data(self, *args, **kwargs):                                        # This is made as part of our categories obtainer to put on the navbar. get_context_data: This method is used to populate a dictionary to use as the template context. https://stackoverflow.com/questions/36950416/when-to-use-get-get-queryset-get-context-data-in-django
         cat = Category.objects.all()                                                    # we select all the objects present in the Category model

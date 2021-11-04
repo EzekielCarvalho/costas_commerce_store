@@ -43,7 +43,7 @@ class Category(models.Model):                                # This is the way o
 
 CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
 
-CATEGORY_CHOICES = ['Mirrorless Cameras', 'DSLR', 'Bridge']                                         # creates a dictionary
+CATEGORY_CHOICES = []                                         # creates a dictionary
 
 for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
     CATEGORY_CHOICES.append(item)
