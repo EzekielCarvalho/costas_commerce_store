@@ -11,12 +11,12 @@ from django.urls import reverse
 from django_countries.fields import CountryField
 
 
-# CATEGORY_CHOICES = (                                        # This is a tuple (Python tuples are a data structure that store an ordered sequence of values. Tuples are immutable. This means you cannot change the values in a tuple. Tuples are defined with parenthesis.)
-#     ('C', 'Compact'),                                        # First entry goes to the database, secnd entry is displayed on the page.
-#     ('BR', 'Bridge'),                                        # These are for choices below which are A sequence consisting itself of iterables of exactly two items (e.g. [(A, B), (A, B) ...]) to use as choices for this field. If choices are given, they’re enforced by model validation and the default form widget will be a select box with these choices instead of the standard text field. (Ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/#choices))
-#     ('DR', 'DSLR'),
-#     ('MR', 'Mirrorless cameras')
-# )
+CATEGORY_CHOICES = (                                        # This is a tuple (Python tuples are a data structure that store an ordered sequence of values. Tuples are immutable. This means you cannot change the values in a tuple. Tuples are defined with parenthesis.)
+    ('C', 'Compact'),                                        # First entry goes to the database, secnd entry is displayed on the page.
+    ('BR', 'Bridge'),                                        # These are for choices below which are A sequence consisting itself of iterables of exactly two items (e.g. [(A, B), (A, B) ...]) to use as choices for this field. If choices are given, they’re enforced by model validation and the default form widget will be a select box with these choices instead of the standard text field. (Ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/#choices))
+    ('DR', 'DSLR'),
+    ('MR', 'Mirrorless cameras')
+)
 
 
 LABEL_CHOICES = (                                           # This is a tuple (Python tuples are a data structure that store an ordered sequence of values. Tuples are immutable. This means you cannot change the values in a tuple. Tuples are defined with parenthesis.)
@@ -41,12 +41,12 @@ class Category(models.Model):                                # This is the way o
         return reverse('core:home-page')                     # "SLUG" from line 26 models.py. "self.slug" is as per the format. "core" from urls.py from line 11 and product-page from line 18. The reverse() function can reverse a large variety of regular expression patterns for URLs, but not every possible one.  kwargs allows you to handle named arguments that you have not defined in advance. ref to for format: https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url 
 
 
-CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
+# CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
 
-CATEGORY_CHOICES = []                                         # creates a dictionary
+# CATEGORY_CHOICES = []                                         # creates a dictionary
 
-for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
-    CATEGORY_CHOICES.append(item)
+# for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
+#     CATEGORY_CHOICES.append(item)
 
 
 class UserProfile(models.Model):                              # This is the way of connecting the user with his/ her credit card details
