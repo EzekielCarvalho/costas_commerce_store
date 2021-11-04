@@ -125,4 +125,5 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 PAYPAL_BUY_BUTTON_IMAGE = "https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png"
 
+
 django_heroku.settings(locals())
