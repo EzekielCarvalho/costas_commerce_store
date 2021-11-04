@@ -33,14 +33,13 @@ ADDRESS_CHOICES = (                                           # This is a tuple 
 
 
 class Category(models.Model):                                # This is the way of connecting the user with his/ her credit card details
-    name = models.CharField(max_length=255, blank=True, null=True)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
+    name = models.CharField(max_length=255)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
 
     def __str__(self):                                       # in every model you should define the standard Python class method __str__() to return a human-readable string for each object. This string is used to represent individual records in the administration site (and anywhere else you need to refer to a model instance). Often this will return a title or name field from the model. (ref: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models)  
         return self.name
 
     def get_absolute_url(self):                              # Define a get_absolute_url() method to tell Django how to calculate the canonical (absolute, recognized) URL for an object. The reverse() function is usually the best approach to be used with get_absolute. One place Django uses get_absolute_url() is in the admin app.  If it makes sense for your model’s instances to each have a unique URL, you should define get_absolute_url(). It’s good practice to use get_absolute_url() in templates, instead of hard-coding your objects’ URLs.  The logic here is that if you change the URL structure of your objects, even for something small like correcting a spelling error, you don’t want to have to track down every place that the URL might be created. Specify it once, in get_absolute_url() and have all your other code call that one place.
         return reverse('core:home-page')                     # "SLUG" from line 26 models.py. "self.slug" is as per the format. "core" from urls.py from line 11 and product-page from line 18. The reverse() function can reverse a large variety of regular expression patterns for URLs, but not every possible one.  kwargs allows you to handle named arguments that you have not defined in advance. ref to for format: https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url 
-
 
 try:
     CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
@@ -66,7 +65,6 @@ class UserProfile(models.Model):                              # This is the way 
 
 class Item(models.Model):                                   # This is going to be displayed in the site on the page where the products are displayed for users to purchase. Once it is added to the cart, it becomes an "OrderItem" (next class)
     try:
-
         title = models.CharField(max_length=100)                # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
         price = models.FloatField(blank=True, null=True)          # For the price. The FloatField class is sometimes mixed up with the DecimalField class. Although they both represent real numbers, they represent those numbers differently. FloatField uses Python’s float type internally, while DecimalField uses Python’s Decimal type. A floating-point number represented in Python by a float instance. ref https://docs.djangoproject.com/en/3.2/ref/models/fields/#django.db.models.FloatField
         discount_price = models.FloatField(blank=True, null=True)          # ref https://thetldr.tech/what-is-the-difference-between-blank-and-null-in-django/ . null=True would tell the underlying database that this field is allowed to save  null. blank=True is applicable in the Django forms layer, i.e. any user is allowed to keep empty this field in Django form or Admin page. blank value is stored in the database.For the price. The FloatField class is sometimes mixed up with the DecimalField class. Although they both represent real numbers, they represent those numbers differently. FloatField uses Python’s float type internally, while DecimalField uses Python’s Decimal type. A floating-point number represented in Python by a float instance. ref https://docs.djangoproject.com/en/3.2/ref/models/fields/#django.db.models.FloatField
@@ -88,7 +86,6 @@ class Item(models.Model):                                   # This is going to b
 
         def get_remove_item_from_cart(self):                     # This function was created mainly because to help with the add to cart feature
             return reverse('core:remove-from-cart', kwargs={'slug': self.slug})     # "SLUG" from line 26 models.py. "self.slug" is as per the format. "core" from urls.py from line 11 and add-to-cart is from line 20. The reverse() function can reverse a large variety of regular expression patterns for URLs, but not every possible one.  kwargs allows you to handle named arguments that you have not defined in advance. ref to for format: https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url
-
 
     except (OperationalError, ProgrammingError):
         pass

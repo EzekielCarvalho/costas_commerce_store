@@ -8,4 +8,4 @@ def get_context_data(request):              # This context processor was made so
         return {'cat': cat}                     # ref https://www.youtube.com/watch?v=2MkULPXXXLk https://betterprogramming.pub/django-quick-tips-context-processors-da74f887f1fc https://www.youtube.com/watch?v=_eWLaL2g1bo
 
     except (OperationalError, ProgrammingError):
-        return []  # No documents table yet
+        pass
