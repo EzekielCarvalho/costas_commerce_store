@@ -19,8 +19,6 @@ from django.db.utils import OperationalError
 #     ('MR', 'Mirrorless cameras')
 # )
 
-CATEGORY_CHOICES = []                                         # creates a dictionary
-
 
 LABEL_CHOICES = (                                           # This is a tuple (Python tuples are a data structure that store an ordered sequence of values. Tuples are immutable. This means you cannot change the values in a tuple. Tuples are defined with parenthesis.)
     ('P', 'primary'),                                       # First entry goes to the database, secnd entry is displayed on the page.
@@ -47,6 +45,7 @@ try:
 
     CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
 
+    CATEGORY_CHOICES = []                                         # creates a dictionary
 
     for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
         CATEGORY_CHOICES.append(item)
