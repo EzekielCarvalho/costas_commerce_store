@@ -9,7 +9,7 @@ from django.db import models
 from django.db.models import Sum
 from django.urls import reverse 
 from django_countries.fields import CountryField
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 
 
 # CATEGORY_CHOICES = (                                        # This is a tuple (Python tuples are a data structure that store an ordered sequence of values. Tuples are immutable. This means you cannot change the values in a tuple. Tuples are defined with parenthesis.)
@@ -41,17 +41,16 @@ class Category(models.Model):                                # This is the way o
     def get_absolute_url(self):                              # Define a get_absolute_url() method to tell Django how to calculate the canonical (absolute, recognized) URL for an object. The reverse() function is usually the best approach to be used with get_absolute. One place Django uses get_absolute_url() is in the admin app.  If it makes sense for your model’s instances to each have a unique URL, you should define get_absolute_url(). It’s good practice to use get_absolute_url() in templates, instead of hard-coding your objects’ URLs.  The logic here is that if you change the URL structure of your objects, even for something small like correcting a spelling error, you don’t want to have to track down every place that the URL might be created. Specify it once, in get_absolute_url() and have all your other code call that one place.
         return reverse('core:home-page')                     # "SLUG" from line 26 models.py. "self.slug" is as per the format. "core" from urls.py from line 11 and product-page from line 18. The reverse() function can reverse a large variety of regular expression patterns for URLs, but not every possible one.  kwargs allows you to handle named arguments that you have not defined in advance. ref to for format: https://docs.djangoproject.com/en/3.2/ref/models/instances/#get-absolute-url 
 
-try:
+    try:
+        CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
 
-    CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
+        CATEGORY_CHOICES = []                                         # creates a dictionary
 
-    CATEGORY_CHOICES = []                                         # creates a dictionary
+        for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
+            CATEGORY_CHOICES.append(item)
 
-    for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
-        CATEGORY_CHOICES.append(item)
-
-except OperationalError:
-    pass  # happens when db doesn't exist yet, views.py should be
+    except (OperationalError, ProgrammingError):
+        pass  # happens when db doesn't exist yet, views.py should be
           # importable without this side effect
 
 
