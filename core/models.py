@@ -43,10 +43,7 @@ class Category(models.Model):                                # This is the way o
 
 CHOICES = Category.objects.all().values_list('name','name')  # This is going to grab all the entries made via admin to the Category model
 
-CATEGORY_CHOICES = [('C', 'Compact'),                                        # First entry goes to the database, secnd entry is displayed on the page.
-    ('BR', 'Bridge'),                                        # These are for choices below which are A sequence consisting itself of iterables of exactly two items (e.g. [(A, B), (A, B) ...]) to use as choices for this field. If choices are given, they’re enforced by model validation and the default form widget will be a select box with these choices instead of the standard text field. (Ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/#choices))
-    ('DR', 'DSLR'),
-    ('MR', 'Mirrorless Cameras')]                                         # creates a dictionary
+CATEGORY_CHOICES = ['Mirrorless Cameras', 'DSLR', 'Bridge']                                         # creates a dictionary
 
 for item in CHOICES:                                            # For each item that is present in the CHOICES results, append or add each of them to the CATEGORY_CHOICES dictionary.
     CATEGORY_CHOICES.append(item)
