@@ -20,6 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, Category
+from django.db.utils import OperationalError, ProgrammingError
 
 stripe.api_key = settings.SECRET_KEY
 endpoint_secret = settings.WEBHOOK_SECRET
@@ -30,10 +31,15 @@ def create_reference_code():                                                    
 
 
 def products(request):                                                                  # This is a function to show all the items present in the Item class in models.py. These items are visible in Django admin.
-    context = {                                                                         # A Context is a dictionary with variable names as the key and their values as the value. Hence, if your context for the above template looks like: {myvar1: 101, myvar2: 102}, when you pass this context to the template render method, {{ myvar1 }} would be replaced with 101 and {{ myvar2 }} with 102 in your template. This is a simplistic example, but really a Context object is the context in which the template is being rendered. ref https://stackoverflow.com/questions/20957388/what-is-a-context-in-django
-        'items': Item.objects.all()                                                     # 'items' is used part of the loop in the home page.html. This is the Items class in models.py, objects.all asks for access to all the items in this class.
-    }
-    return render(request, "products.html", context)                                    # This is all part of the format. The render() function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. It returns an HttpResponse object of the given template rendered with the given context. ref https://docs.djangoproject.com/en/3.2/intro/tutorial03/
+    try:
+
+        context = {                                                                         # A Context is a dictionary with variable names as the key and their values as the value. Hence, if your context for the above template looks like: {myvar1: 101, myvar2: 102}, when you pass this context to the template render method, {{ myvar1 }} would be replaced with 101 and {{ myvar2 }} with 102 in your template. This is a simplistic example, but really a Context object is the context in which the template is being rendered. ref https://stackoverflow.com/questions/20957388/what-is-a-context-in-django
+            'items': Item.objects.all()                                                     # 'items' is used part of the loop in the home page.html. This is the Items class in models.py, objects.all asks for access to all the items in this class.
+        }
+        return render(request, "products.html", context)                                    # This is all part of the format. The render() function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. It returns an HttpResponse object of the given template rendered with the given context. ref https://docs.djangoproject.com/en/3.2/intro/tutorial03/
+
+    except (OperationalError, ProgrammingError):
+            return []  # No documents table yet
 
 
 def validator(values):                  # This function has been made to validate entries made for the shipping address, because the required in forms.py have been set to False, so people can enter empty strings. To avoid this, and add validation, this function has been made
@@ -45,21 +51,26 @@ def validator(values):                  # This function has been made to validat
 
 
 def searchbar(request):                         # This is a function for our search bar, it takes in a request
-    if request.method == 'GET':                 # If the method of the request is a "GET". This is shown on the form HTML
-        search = request.GET.get('search')      # Then we get the 'search' name details and save it in this variable
-        post = Item.objects.all().filter(       # Then we filter all objects from the Item method and save to the post variable
-            Q(description__icontains=search)    # we filter as per description matching the search variable results, regardless if it contains capital or small letters  
-            | Q(title__icontains=search)        # we filter as per title matching the search variable results, regardless if it contains capital or small letters  
-            | Q(category__icontains=search)     # we filter as per category matching the search variable results, regardless if it contains capital or small letters  
-        ).distinct()                            # distinct() Returns a new QuerySet that uses SELECT DISTINCT in its SQL query. This eliminates duplicate rows from the query results. By default, a QuerySet will not eliminate duplicate rows. ref https://docs.djangoproject.com/en/3.2/ref/models/querysets/#:~:text=distinct()&text=Returns%20a%20new%20QuerySet%20that,will%20not%20eliminate%20duplicate%20rows.
-        context = {
-            'post': post}                                       # here we try to connect the previous code to fetch the order that has been completed so that we can fetch the reference code and other order details to post to the success.html page after payment       
-        return render(request, "searchbar.html", context)
-    
-    else:
-        messages.warning(
-            request, "Nothing to look here")
-        return redirect("core:home-page.html")
+    try:
+
+        if request.method == 'GET':                 # If the method of the request is a "GET". This is shown on the form HTML
+            search = request.GET.get('search')      # Then we get the 'search' name details and save it in this variable
+            post = Item.objects.all().filter(       # Then we filter all objects from the Item method and save to the post variable
+                Q(description__icontains=search)    # we filter as per description matching the search variable results, regardless if it contains capital or small letters  
+                | Q(title__icontains=search)        # we filter as per title matching the search variable results, regardless if it contains capital or small letters  
+                | Q(category__icontains=search)     # we filter as per category matching the search variable results, regardless if it contains capital or small letters  
+            ).distinct()                            # distinct() Returns a new QuerySet that uses SELECT DISTINCT in its SQL query. This eliminates duplicate rows from the query results. By default, a QuerySet will not eliminate duplicate rows. ref https://docs.djangoproject.com/en/3.2/ref/models/querysets/#:~:text=distinct()&text=Returns%20a%20new%20QuerySet%20that,will%20not%20eliminate%20duplicate%20rows.
+            context = {
+                'post': post}                                       # here we try to connect the previous code to fetch the order that has been completed so that we can fetch the reference code and other order details to post to the success.html page after payment       
+            return render(request, "searchbar.html", context)
+        
+        else:
+            messages.warning(
+                request, "Nothing to look here")
+            return redirect("core:home-page.html")
+
+    except (OperationalError, ProgrammingError):
+            return []  # No documents table yet
 
 def process_payment(request):
     order = Order.objects.get(user=request.user, ordered=False)                # This is to get and set the user and ordered fields of the Order class and save them to the 'order' variable
