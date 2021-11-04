@@ -1,6 +1,7 @@
 import os
 import django_heroku
-
+import dj_database_url
+from decouple import config
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
