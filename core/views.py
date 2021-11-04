@@ -38,7 +38,7 @@ def products(request):                                                          
         return render(request, "products.html", context)                                    # This is all part of the format. The render() function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. It returns an HttpResponse object of the given template rendered with the given context. ref https://docs.djangoproject.com/en/3.2/intro/tutorial03/
 
     except (OperationalError, ProgrammingError):
-            pass
+        pass
 
 
 def validator(values):                  # This function has been made to validate entries made for the shipping address, because the required in forms.py have been set to False, so people can enter empty strings. To avoid this, and add validation, this function has been made
