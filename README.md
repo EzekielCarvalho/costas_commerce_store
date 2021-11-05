@@ -10,9 +10,9 @@
 
 > An e-commerce application with full CRUD capabilities. This project allows users to interact to signup for an account and make real online purchases via paypal or stripe. Users have the capability of viewing products, adding multiple products, removing products from the shopping cart, adding coupons for discounts, and eventually purchasing products.
 
-> The application allows for a superuser to be created after a successful deploy. This super user is given admin priviledges which allows for items to be added, photos to be uploaded, coupons to be added, etc. just as with a normal ecommerce store website.The website includes a search bar allowing for searches to made for products in the database. There are category buttons as well so that products can be displayed based on categories. This site supports the use of Stripe and Paypal.
+> The application allows for a superuser to be created after a successful deploy. This super user is given admin priviledges which allows for items to be added, photos to be uploaded, coupons to be added, etc. just as with a normal ecommerce store website.The website includes a search bar allowing for searches to made for products in the database. There are category buttons as well so that products can be displayed based on categories. This site supports the use of Stripe and Paypal. This application is also connected to Cloudinary as a host provider for hosting images.
 
-> Note: Images may have to be re-uploaded to each product-item upon reloading the server. After a new category is added to the Django admin, users should reload the server for changes to take effect.
+> Note: After a new category is added to the Django admin, users should reload or restart the server for changes to take effect and display. If it is Heroku, then 'Heroku restart' has to be run.
 
 ![Costas Commerce Store GIF](./images/costas-commerce-storeGIF.gif "Costas Commerce Store gif")
 
