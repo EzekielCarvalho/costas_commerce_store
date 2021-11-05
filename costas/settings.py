@@ -2,6 +2,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
@@ -28,6 +31,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'django_countries',
     'crispy_forms',
+    'cloudinary',
     'django_cleanup.apps.CleanupConfig',
     'core'
 ]
@@ -127,3 +131,10 @@ PAYPAL_BUY_BUTTON_IMAGE = "https://www.paypalobjects.com/webstatic/en_US/i/butto
 
 
 django_heroku.settings(locals())
+
+# adding config
+cloudinary.config( 
+  cloud_name = "ezekielcloud", 
+  api_key = "454864669193459", 
+  api_secret = "PjBovHpe40O-Jd3yFvePFSvdfDo" 
+)
