@@ -6,6 +6,7 @@
 from django.db.models.signals import post_save
 from django.conf import settings                            #This is necessary since we want to make use of our auth user model. This is from Django settings. This isn’t a module – it’s an object. So importing individual settings is not possible. This extracts or sucks (abstracts) the concepts of default settings and site-specific settings; it presents a single interface. It also separates (decouples) the code that uses settings from the location of your settings. (ref: https://docs.djangoproject.com/en/2.2/topics/settings/#using-settings-in-python-code)
 from django.db import models
+import cloudinary
 from cloudinary.models import CloudinaryField
 from django.db.models import Sum
 from django.urls import reverse 
