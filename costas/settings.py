@@ -5,7 +5,7 @@ from decouple import config
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
-DEBUG = False                                   # Set this to 'TRUE' when working in development mode
+DEBUG = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLIC_KEY = 'pk_test_51H1OafE3YTenXSzfecGaACyMkoh9MtZy2PXiqmLadSwnEzODKRBoWnGMeqWoO3K3EMDTj3tDnlwIeHah5kTjqsLq00eZj4z5WG'
 SECRET_KEY = 'sk_test_51H1OafE3YTenXSzf4hDhTVGnjmRJQa6vvnhGzgv9nQMf7FKIYilKeprkktpl4GnvUkwRlMmtCUSQQuOZhfIZMaau00IBxGfxmW'
