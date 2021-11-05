@@ -1,11 +1,21 @@
-{% extends "account/base.html" %}
+{% extends "account/base.html" %} {% load i18n %} {% load account socialaccount
+%} {% load static %} {% block head_title %}{% trans "Sign Up Closed" %}{%
+endblock %} {% block content %}
+<main class="mt-5 pt-4">
+  <div class="container">
+    <!--Section: Products v.3-->
+    <section class="mb-4">
+      <div class="row wow fadeIn">
+        <div class="col-6 offset-3">
+          <h1>{% trans "Sign Up Closed" %}</h1>
 
-{% load i18n %}
+          <p>
+            {% trans "We are sorry, but the sign up is currently closed." %}
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
-
-{% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
-
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
 {% endblock %}
