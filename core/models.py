@@ -6,7 +6,6 @@
 from django.db.models.signals import post_save
 from django.conf import settings                            #This is necessary since we want to make use of our auth user model. This is from Django settings. This isn’t a module – it’s an object. So importing individual settings is not possible. This extracts or sucks (abstracts) the concepts of default settings and site-specific settings; it presents a single interface. It also separates (decouples) the code that uses settings from the location of your settings. (ref: https://docs.djangoproject.com/en/2.2/topics/settings/#using-settings-in-python-code)
 from django.db import models
-import cloudinary
 from cloudinary.models import CloudinaryField
 from django.db.models import Sum
 from django.urls import reverse 
@@ -35,7 +34,7 @@ ADDRESS_CHOICES = (                                           # This is a tuple 
 
 class Category(models.Model):                                # This is the way of connecting the user with his/ her credit card details
     
-    name = models.CharField(max_length=255)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
+    name = models.CharField(max_length=255, blank=True, null=True)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
 
     def __str__(self):                                       # in every model you should define the standard Python class method __str__() to return a human-readable string for each object. This string is used to represent individual records in the administration site (and anywhere else you need to refer to a model instance). Often this will return a title or name field from the model. (ref: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models)  
         return self.name
