@@ -1,4 +1,4 @@
-{% extends "account/base.html" %} 
+{% extends "base.html" %} 
 {% load i18n %} 
 {% load account socialaccount %} 
 {% load static %} 
@@ -31,8 +31,7 @@
 
           <p>
             {% blocktrans %}<strong>Note:</strong> you can still
-            <a href="{{ email_url }}">change your e-mail address</a>.{%
-            endblocktrans %}
+            <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}
           </p>
         </div>
       </div>

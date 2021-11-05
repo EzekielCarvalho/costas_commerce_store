@@ -34,7 +34,7 @@ ADDRESS_CHOICES = (                                           # This is a tuple 
 
 class Category(models.Model):                                # This is the way of connecting the user with his/ her credit card details
     
-    name = models.CharField(max_length=255, blank=True, null=True)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
+    name = models.CharField(max_length=255)                  # This is A string field, for small- to large-sized strings. (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/) (syntax: ass CharField(max_length=None, **options))
 
     def __str__(self):                                       # in every model you should define the standard Python class method __str__() to return a human-readable string for each object. This string is used to represent individual records in the administration site (and anywhere else you need to refer to a model instance). Often this will return a title or name field from the model. (ref: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models)  
         return self.name
