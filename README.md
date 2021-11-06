@@ -62,12 +62,16 @@ You can make new purchases of products, with or without the coupon codes, via St
 ![Version](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 ![Version](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![Version](https://img.shields.io/badge/CSS-blue?&style=for-the-badge&logo=css3&logoColor=white)
+
 ![Version](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Version](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Version](https://img.shields.io/badge/JQuery-blue?style=for-the-badge&logo=jquery&logoColor=white)
+
 ![Version](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![Version](https://img.shields.io/badge/Stripe-white?style=for-the-badge&logo=stripe&logoColor=blue)
 ![Version](https://img.shields.io/badge/Paypal-blue?style=for-the-badge&logo=paypal&logoColor=white)
 ![Version](https://img.shields.io/badge/sqlite-white?style=for-the-badge&logo=sqlite&logoColor=black)
+
 ![Version](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
 ## Website stats
